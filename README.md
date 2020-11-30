@@ -1,5 +1,5 @@
 # Lab7, docker-compose
-Prosta aplikacja wykorzystująca środowisko LAMP (Apache, MySQL, PHP). 
+Prosta aplikacja wykorzystująca usługę LAMP (Apache, MySQL, PHP). 
 
 ## Struktura
 Skrypt PHP znajduje się w folderze ./Skrypt.
