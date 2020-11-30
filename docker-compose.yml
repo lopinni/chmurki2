@@ -1,0 +1,52 @@
+version: '3.7'
+
+services:
+        php-apache:
+
+        # Buduję obraz serwera Apache na podstawie Dockerfile
+
+                build:
+                        context: ./php-dockerfile
+                container_name: php-apache_serwer
+                networks:
+                        - backend
+                        - frontend
+
+                # Udostępniam port 8000
+
+                ports:
+                        - 8000:80
+
+                # Montuję wolumen ze skryptem php
+
+                volumes:
+                        - ./Skrypt:/var/www/html
+        mysql:
+
+        # Buduję obraz mySQL
+
+                image: mysql:latest
+                container_name: mysql_serwer
+                networks:
+                        - backend
+
+                # Tworzę wolumen do bazy danych
+
+                volumes:
+                        - mysqldb:/var/lib/mysql
+
+                # Ustawiam zmienne środowiskowe
+
+                environment:
+                        TZ: "Europe/Warsaw"
+                        MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+                        MYSQL_ROOT_PASSWORD: "rootpwd"
+                        MYSQL_USER: 'testuser'
+                        MYSQL_PASSWORD: 'testpassword'
+                        MYSQL_DATABASE: 'testdb'          
+volumes:
+        mysqldb:
+
+networks:
+        frontend:
+        backend:
