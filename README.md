@@ -1,4 +1,4 @@
-# docker-compose
+# Lab7, docker-compose
 Simple app showing phpinfo on docker containers, based on docker-compose.
 
 ## Description
